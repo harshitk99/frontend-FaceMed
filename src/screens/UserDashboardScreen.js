@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, Alert } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import axios from 'axios';
+import Button from '../components/Button';
+
 
 export default function UserDashboardScreen({ route, navigation }) {
     const { token } = route.params;

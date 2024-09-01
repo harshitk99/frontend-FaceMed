@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import axios from 'axios';
+import Button from '../components/Button';
+import TextInput from '../components/InputField';
 
 export default function UserSignupScreen({ navigation }) {
     const [name, setName] = useState('');

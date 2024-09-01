@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
+import { View, Text, Alert, StyleSheet } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
+import Button from '../components/Button';
+import TextInput from '../components/InputField';
 
 export default function LoginScreen({ navigation }) {
     const [name, setName] = useState('');
@@ -26,14 +29,40 @@ export default function LoginScreen({ navigation }) {
     };
 
     return (
-        <View>
+        <View style={styles.container}>
             <TextInput placeholder="Name" value={name} onChangeText={setName} />
             <TextInput placeholder="Password" value={password} secureTextEntry onChangeText={setPassword} />
-            <Button title="Login as User" onPress={() => setRole('user')} />
-            <Button title="Login as Professional" onPress={() => setRole('professional')} />
+            <Text style={styles.label}>Select Role:</Text>
+            <Picker
+                selectedValue={role}
+                style={styles.picker}
+                onValueChange={(itemValue) => setRole(itemValue)}
+            >
+                <Picker.Item label="User" value="user" />
+                <Picker.Item label="Professional" value="professional" />
+            </Picker>
             <Button title="Login" onPress={handleLogin} />
             <Button title="Sign Up as User" onPress={() => navigation.navigate('UserSignup')} />
             <Button title="Sign Up as Professional" onPress={() => navigation.navigate('ProfessionalSignup')} />
         </View>
     );
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
+    },
+    label: {
+        fontSize: 18,
+        marginBottom: 10,
+    },
+    picker: {
+        height: 50,
+        width: 200,
+        marginBottom: 20,
+    },
+});

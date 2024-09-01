@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import axios from 'axios';
+import Button from '../components/Button';
+import TextInput from '../components/InputField';
 
 export default function ProfessionalSignupScreen({ navigation }) {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [contact, setContact] = useState('');
-    const [hospital, setHospital] = useState('');
+    const [affiliatedHospital, setAffiliatedHospital] = useState('');
     const [doctorID, setDoctorID] = useState('');
 
     const handleSignup = async () => {
@@ -15,18 +17,18 @@ export default function ProfessionalSignupScreen({ navigation }) {
             return;
         }
 
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('password', password);
-        formData.append('Contact', contact);
-        formData.append('Doctor ID', doctorID);
-        formData.append('hospital', hospital);
-
+        const data = {
+            name,
+            password,
+            contact,
+            doctorId: doctorID,
+            affiliatedHospital,
+        };
 
         try {
-            await axios.post('http://192.168.1.33:3000/upload', formData, {
+            await axios.post('http://192.168.1.33:3000/register-professional', data, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                 },
             });
             Alert.alert('Signup successful');
@@ -41,7 +43,7 @@ export default function ProfessionalSignupScreen({ navigation }) {
             <TextInput placeholder="Name" value={name} onChangeText={setName} />
             <TextInput placeholder="Password" value={password} secureTextEntry onChangeText={setPassword} />
             <TextInput placeholder="Doctor ID" value={doctorID} onChangeText={setDoctorID} />
-            <TextInput placeholder="Affiliated hospital" value={hospital} onChangeText={setHospital} />
+            <TextInput placeholder="Affiliated hospital" value={affiliatedHospital} onChangeText={setAffiliatedHospital} />
             <TextInput placeholder="Contact" value={contact} onChangeText={setContact} />
             <Button title="Sign Up" onPress={handleSignup} />
         </View>

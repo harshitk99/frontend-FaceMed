@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
+import Button from '../components/Button';
+import TextInput from '../components/InputField';
 
 export default function UpdateUserScreen({ navigation, route }) {
     const { token, userData } = route.params;
