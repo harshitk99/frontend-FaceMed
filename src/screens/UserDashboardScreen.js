@@ -9,7 +9,7 @@ export default function UserDashboardScreen({ route, navigation }) {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/userData', {
+                const response = await axios.get('http://192.168.1.33:3000/userData', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setUserData(response.data);

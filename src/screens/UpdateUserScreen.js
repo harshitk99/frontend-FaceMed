@@ -43,7 +43,7 @@ export default function UpdateUserScreen({ navigation, route }) {
                 });
             }
 
-            await axios.post('http://localhost:3000/update', formData, {
+            await axios.post('http://192.168.1.33:3000/update', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`,

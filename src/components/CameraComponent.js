@@ -35,7 +35,7 @@ export default function CameraComponent({ navigation, route }) {
                 type: 'image/jpeg',
             });
 
-            const response = await axios.post('http://localhost:3000/verify', formData, {
+            const response = await axios.post('http://192.168.1.33:3000/verify', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`,

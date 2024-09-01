@@ -13,7 +13,7 @@ export default function LoginScreen({ navigation }) {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:3000/login', { name, password, role });
+            const response = await axios.post('http://192.168.1.33:3000/login', { name, password, role });
             const { token } = response.data;
             if (role === 'user') {
                 navigation.navigate('UserDashboard', { token });

@@ -33,7 +33,7 @@ export default function UserSignupScreen({ navigation }) {
         });
 
         try {
-            await axios.post('http://localhost:3000/upload', formData, {
+            await axios.post('http://192.168.1.33:3000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
