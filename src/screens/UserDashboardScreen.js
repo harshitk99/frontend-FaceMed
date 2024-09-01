@@ -16,11 +16,12 @@ export default function UserDashboardScreen({ route, navigation }) {
                 });
                 setUserData(response.data);
             } catch (error) {
+                console.error('Error fetching user data:', error)
                 Alert.alert('Failed to load user data');
             }
         };
         fetchUserData();
-    }, []);
+    }, [token]); // Add token as a dependency
 
     return (
         <View>
